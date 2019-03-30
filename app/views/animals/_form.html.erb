@@ -18,7 +18,7 @@
 
   <div class="field">
     <%= form.label :avatar %> <sup>Can upload single image</sup>
-    <%= form.file_field :avatar %>
+    <%= form.file_field :avatar, :accept => "image/png,image/gif,image/jpeg" %>
   </div>
 
   <% if form.object.avatar.attached? %>

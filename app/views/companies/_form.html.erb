@@ -18,7 +18,7 @@
 
   <div class="field">
     <%= form.label :images %> <sup>Can upload multiple images</sup>
-    <%= form.file_field :images , :multiple => true  %>
+    <%= form.file_field :images , :multiple => true, :accept => "image/png,image/gif,image/jpeg"  %>
   </div>
 
   <% if form.object.images.count > 0 %>
