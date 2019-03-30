@@ -1,5 +1,5 @@
 class AnimalsController < ApplicationController
-  before_action :set_animal, only: [:show, :edit, :update, :destroy]
+  before_action :set_animal, only: [:show, :edit, :update, :destroy, :destroy_image]
 
   # GET /animals
   # GET /animals.json
@@ -61,6 +61,14 @@ class AnimalsController < ApplicationController
     end
   end
 
+  def destroy_image
+    @animal.avatar.purge
+    respond_to do |format|
+      format.html { redirect_to animals_url, notice: 'Image was successfully removed' }
+      format.json { head :no_content }
+    end
+  end
+
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_animal
@@ -69,6 +77,6 @@ class AnimalsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def animal_params
-      params.require(:animal).permit(:name)
+      params.require(:animal).permit(:name, :avatar)
     end
 end
