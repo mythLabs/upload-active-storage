@@ -7,6 +7,7 @@
     <tr>
       <th>Name</th>
       <th>Image</th>
+      <th>Download Link</th>
       <th>Actions</th>
     </tr>
   </thead>
@@ -21,6 +22,11 @@
           <% else %>
             No image
           <% end %>
+        </td>
+        <td>
+        <% if animal.avatar.attached? %>
+        <%= link_to animal.avatar.filename, rails_blob_path(animal.avatar, disposition: 'attachment') %>
+        <% end %>
         </td>
         <td><%= link_to 'Show', animal %>
           <%= link_to 'Edit', edit_animal_path(animal) %>
